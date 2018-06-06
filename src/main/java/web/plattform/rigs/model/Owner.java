@@ -12,7 +12,9 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String country;
+
+    @OneToOne
+    private Country country;
 
     @ManyToMany(mappedBy = "owners")
     private Set<Rig> rigs = new HashSet<>();
@@ -21,12 +23,12 @@ public class Owner {
 
     }
 
-    public Owner(String name, String country){
+    public Owner(String name, Country country){
         this.name = name;
         this.country = country;
     }
 
-    public Owner(String name, String country, Set<Rig> Rigs){
+    public Owner(String name, Country country, Set<Rig> Rigs){
         this.name = name;
         this.country = country;
         this.rigs = rigs;
@@ -48,12 +50,20 @@ public class Owner {
         this.name = name;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Set<Rig> getRigs() {
+        return rigs;
+    }
+
+    public void setRigs(Set<Rig> rigs) {
+        this.rigs = rigs;
     }
 
     @Override

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Plattforms</title>
+</head>
+<body>
+<h1>Rig List</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>RigType</th>
+    </tr>
+    <tr th:each="rig : ${rigs}">
+        <td th:text="${rig.id}">123</td>
+        <td th:text="${rig.name}">Pellworm</td>
+        <td th:text="${rig.rigType.name}">Oil</td>
+    </tr>
+</table>
+
+</body>
+</html>
