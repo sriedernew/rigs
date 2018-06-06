@@ -12,7 +12,9 @@ public class Rig {
     private Long id;
     private String name;
     private Integer IMO;
-    private String type;
+
+    @OneToOne
+    private RigType rigtype;
 
     @ManyToMany
     @JoinTable(name = "owner_rig", joinColumns = @JoinColumn(name="rig_id"),
@@ -24,16 +26,16 @@ public class Rig {
 
     }
 
-    public Rig(String name, Integer IMO, String type){
+    public Rig(String name, Integer IMO, RigType rigtype){
         this.name = name;
         this.IMO = IMO;
-        this.type = type;
+        this.rigtype = rigtype;
     }
 
-    public Rig(String name, Integer IMO, String type, Set<Owner> owners){
+    public Rig(String name, Integer IMO, RigType rigtype, Set<Owner> owners){
         this.name = name;
         this.IMO = IMO;
-        this.type = type;
+        this.rigtype = rigtype;
         this.owners = owners;
     }
 
@@ -62,12 +64,12 @@ public class Rig {
         this.IMO = IMO;
     }
 
-    public String getType() {
-        return type;
+    public RigType getRigType() {
+        return rigtype;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRigType(RigType rigtype) {
+        this.rigtype = rigtype;
     }
 
     public Set<Owner> getOwners() {
@@ -99,7 +101,7 @@ public class Rig {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", IMO=" + IMO +
-                ", type='" + type + '\'' +
+                ", rigtype='" + rigtype + '\'' +
                 ", owners=" + owners +
                 '}';
     }
